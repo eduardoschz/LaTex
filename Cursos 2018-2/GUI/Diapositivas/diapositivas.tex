@@ -1,0 +1,212 @@
+\documentclass[11pt]{beamer}
+\usetheme{Copenhagen}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,petri,positioning,matrix}
+\usepackage{listings}
+
+
+\author{J. Eduardo Sánchez Posadas}
+\title{Interfaces Gráficas de Usuario con Java}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+\institute{FES Aragón} 
+ 
+\subject{GUI con Java} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Objetivos}
+\begin{frame}{Objetivos}
+\begin{itemize}
+\item Diseñar interfaces gráficas
+\item Conocer el entorno de interfaces gráficas de Java
+\end{itemize}
+\end{frame}
+
+%\section{Justificación}
+%\begin{frame}{Justificación}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+%\end{frame}
+
+\section{Temario}
+\begin{frame}{Temario}
+\begin{enumerate}
+\item Contenedores
+\item Componentes
+\item Cuadros de Diálogo
+\item Manejadores de composicion
+\item Formularios
+\item Manejo de eventos
+\item Menús
+\item Gráficos
+\item Applets*
+\end{enumerate}
+\end{frame}
+
+
+
+\section{Evaluación}
+\begin{frame}{Evaluación}
+\begin{itemize}
+\item Mínimo 80\% de asistencia
+\item Actividades: 30\%
+\item Proyecto: 70\%
+\end{itemize}
+\end{frame}
+
+\section{Contenedores}
+\begin{frame}{Contenedores}
+\begin{itemize}
+\item Elemento gráfico
+\item Permite agrupar otros elementos
+\item Debe haber al menos uno por aplicación para iniciarise
+\end{itemize}
+\end{frame}
+
+\subsection{JFrame}
+\begin{frame}{\textbf{JFrame}}
+Un JFrame es un contenedor que se comporta como una ventana, la cual puede tener propiedades físicas. Estas propiedades pueden estar dadas por el tamaño, color y posición, entre otras.
+\end{frame}
+
+\begin{frame}[fragile]{MiJFrame}
+\lstset{language=Java,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#},
+                numbers=left
+}
+\begin{tiny}
+
+\begin{lstlisting}
+package gui.contenedores;
+
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
+public class MiJFrame extends JFrame {
+
+    public static void main(String[] args) {
+        MiJFrame frame = new MiJFrame();
+        frame.setVisible(true);
+    }
+
+    public MiJFrame() {
+        initGUI();
+    }
+
+    private void initGUI() {
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Mi JFrame");
+        setSize(400, 300);
+    }
+}
+
+\end{lstlisting}
+\end{tiny}
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+\begin{figure}
+\includegraphics[scale=0.2]{pics/pic1.png}
+\caption{MiJFrame} 
+\end{figure}
+\end{center}
+\end{frame}
+\subsection{JInternalFrame}
+\begin{frame}{JInternalFrame}
+Un \textit{JInternalFrame} es un contenedor que se comporta como una ventana interna, es decir, una ventana que se puede abrir solo dentro de un \textit{JFrame}.
+\end{frame}
+
+\begin{frame}
+A través de un \textit{JInternalFrame} es posible implementar aplicaciones \textbf{MDI} (Multiple Interface Document), debido a que es posible abrir varios \textit{JInternalFrame} dentro de un \textit{JFrame}, en donde cada uno de ellos provee funcionalidades independientes a la aplicación.
+\end{frame}
+ 
+\begin{frame}[fragile]
+
+Para que un \textit{JFrame} pueda contener un \textit{JInternalFrame} es necesario tener dentro del \textit{JFrame} otro contenedor especial denominado \textit{JDesktopPane}. Este contenedor se adiciona al \textit{JFrame} con la siguiente sintaxis:
+
+\lstset{language=Java,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+
+\begin{lstlisting}
+JDesktopPane desktopPane = new JDesktopPane();
+getContentPane().add(desktopPane);
+
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+Desde el \textit{JFrame} debe crearse un instancia al \textit{JInternalFrame}. Para adicionar la instancia al \textit{JFrame} se debe hacer a través del \textit{JDesktopPane} con la siguiente sintaxis:
+
+\lstset{language=Java,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+
+\begin{lstlisting}
+Flnterno frame = new FInterno();
+desktopPane.add(frame);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+\begin{figure}
+\includegraphics[scale=0.2]{pics/pic2.png} 
+\end{figure}
+\end{center}
+\end{frame}
+\subsection{JPanel}
+\begin{frame}{JPanel}
+Un \textit{JPanel} es un contenedor que tiene muchas aplicaciones. Dentro de las aplicaciones más comunes están, el permitir agregar componentes para que puedan ser organizados gráficamente de una forma determinada.
+\end{frame}
+
+\begin{frame}
+Otra aplicación común es utilizar el JPanel como pizarra para gráficos. Un panel también puede tener un título de acuerdo al uso que se le esté dando.
+\end{frame}
+
+\begin{frame}{Pila}
+\begin{center}
+\begin{tikzpicture}[draw, minimum width=1cm, minimum height=0.5cm]
+    \node[draw] (in) at (-1,2) {In};
+    \node[draw] (out) at (1,2) {Out};
+    \matrix (queue) [matrix of nodes, nodes={draw, nodes={draw}}, nodes in empty cells]
+    {
+       a \\ e \\ \\ \\
+    };
+
+    \draw[-latex] (0.25,1) .. controls (0.25,1.5) and (1,1.5) .. (out.south);
+    \draw[-latex] (in.south) .. controls (-1, 1.5) and (-0.25,1.5) .. (-0.25,1);
+\end{tikzpicture}
+\end{center}
+
+\end{frame}
+
+\end{document}
