@@ -1,0 +1,87 @@
+\documentclass[11pt]{beamer}
+\usetheme{CambridgeUS}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+
+
+\author{J. Eduardo Sánchez Posadas}
+\title{Estructuras de Datos con Java}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+\logo{\includegraphics[scale=0.5]{pics/g10368.png} } 
+%\institute{} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Objetivos}
+\begin{frame}{Evaluación}
+\begin{itemize}
+\item Minimo 80\% asistencia
+\item 40\% tareas y prácticas
+\item 60\% proyecto
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Tipos de estructuras}
+\begin{tiny}
+\begin{tikzpicture}[level distance=0cm,
+   level 1/.style={sibling distance=6cm, level distance=1cm},
+   level 2/.style={sibling distance=2cm, level distance=1.25cm},
+   level 3/.style={sibling distance=1.1cm, level distance=1cm},
+   level 4/.style={sibling distance=1.15cm, level distance=1.5cm},
+   level 5/.style={sibling distance=1.125cm, level distance=1.5cm}]
+\node {Estructuras de Datos}
+   child {
+	node {Estrcuturas Simples}
+	   child {node {Estructura}
+			child{node{\texttt{byte}}}
+			child{node{\texttt{short}}}
+			child{node{\texttt{int}}}
+			child{node{\texttt{long}}}
+			child{node{\texttt{float}}}
+			child{node{\texttt{\ldots}}}   
+	   }
+	   child {node {Arreglo}}
+}
+child {node {Estructuras Compuestas}
+	child {node {Lineales}
+			child{node{Lista}
+			child{node{Simple}}
+			child{node{Ligada}}
+			child{node{Circular}}
+			child{node{Circular doble}}
+}
+		child{node{Pila}}
+		child{node{Cola}}
+}
+   child {node {No-Lineal}
+		child{node{Grafo}
+			child{node{Arbol}
+				child{node{B}}
+				child{node{B+}}}
+}
+	}
+};
+\end{tikzpicture}
+\end{tiny}
+
+\end{frame}
+
+\end{document}
