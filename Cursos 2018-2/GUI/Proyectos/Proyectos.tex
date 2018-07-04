@@ -97,7 +97,29 @@ cm] % Course Name
 \end{tabular}
 \end{table}
 \end{center}
-\newpage
+
+\section{Aspectos a evaluar}
+\begin{center}
+\begin{tabular}{|c||c|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Rubro & Porcentaje \\ 
+\hline \hline
+\rule[-1ex]{0pt}{2.5ex} Funcionalidad & 50\% \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Uso de componentes & 25\% \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Uso de contenedores & 25\% \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Uso de cuadros de diálogo & +10\% \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Estética de la interfaz & +15\% \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex}  & $\pm$ 125\% \\ 
+\hline 
+\end{tabular} 
+\end{center}
+
+
 \section{Generador de Funciones Sinusoidales}
 \subsection{Introducción}
 
@@ -179,6 +201,7 @@ vertical de la señal}
 \item Mostrar valor $RMS$ de la señal
 \item Guardar una imagen en JPEG o PNG
 \item Malla
+\item Cada componente deberá tener \textsf{toolTipText} explicando brevemente que función realiza. 
 \end{itemize}
 
 En la Figura 3 se sugiere la interfaz gráfica\footnote{Código disponible aquí: }
@@ -186,9 +209,11 @@ En la Figura 3 se sugiere la interfaz gráfica\footnote{Código disponible aquí
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{pics/img_1.JPG} 
+\includegraphics[scale=0.5]{pics/img_1.JPG} 
 \caption{Sugerencia de interfaz gráfica para este proyecto.}
 \end{figure}
+
+
 
 \section{Sistema de Votación}
 \subsection{Descripción}
@@ -200,17 +225,74 @@ Las tecnologías del voto electrónico pueden acelerar el conteo de los votos y 
 
 No se ha encontrado un modelo formal (conocido en la jerga como \textit{Model checking}) que garantice la seguridad de un sistema electrónico de votación. Los modelos formales son un requisito básico para mostrar que un sistema no tiene fallas triviales.
 
-\newpage
-\section*{Apéndice A}
-sd
-\newpage
-\section*{Apéndice B}
-sd
-\newpage
-\section*{Apéndice C}
-sd
+\subsection{Requerimientos}
+
+Para este proyecto se requerirá lo siguiente:
+\begin{itemize}
+\item Ventana para registro de candidatura, y que lo guarde en archivo serializable \texttt{.cnd}:
+\begin{itemize}
+\item Partido o independiente
+\item Color de partido o color de independiente
+\item Logo de partido o independiente
+\item Nombre del propietario
+\item Nombre del suplente
+\end{itemize}
+\item Ventana para registro de electores, y que lo guarde en archivo serializable \texttt{.vota}:
+\begin{itemize}
+\item Nombre
+\item Identificador (Clave de Elector o Matricula)
+\end{itemize}
+\item En el sistema se debe poder registrar a $n$ cantidad de candidatos y $m$ cantidad de electores.
+\item Ventana de votación.
+\item  Se debe establecer una hora de inicio y fin de la jornada electoral. Debe estar visible un reloj con segundos junto con la hora de inicio y la hora de fin en la ventana de votación. Una vez finalizado el tiempo ningún votante podrá acceder.
+\item El voto será válido si y solo sí:
+\begin{itemize}
+\item Selecciona una opción.
+\end{itemize}
+\item El voto sera nulo si:
+\begin{itemize}
+\item Selecciona mas de una opción.
+\item No selecciona ninguna opción. 
+\end{itemize}
+\item Los votos deben ser anónimos.
+\item Solo se puede votar una vez.
+\item Los votos se depositan en una estructura de datos tipo pila.
+\item Ventana de resultados:
+\begin{itemize}
+\item Se deben mostrar los resultados en una gráfica de barras.
+\item Cada barra depende del color del partido o logo de los candidatos.
+\item Mostrar el logo de los candidatos.
+\item Generar un reporte en archivo de texto plano con la siguiente información:
+\begin{itemize}
+\item Porcentaje de participación.
+\item Partido, nombres del propietario y suplente, cantidad de votos y porcentaje de votos.
+\item Declarar un ganador.
+\end{itemize}
+\end{itemize} 
+\item Cada componente debe tener un \texttt{toolTipText} explicando que función realiza.
+\end{itemize}
 \newpage
 
+
+\section*{Apéndice A. Gráficos}
+
+\newpage
+\section*{Apéndice B. Gráficos 2D}
+
+\newpage
+\section*{Apéndice C. Gráficos estadísticos}
+
+\newpage
+
+\section*{Apéndice D. Diagrama de clases para el generador de funciones}
+
+\newpage
+\section*{Apéndice E. Diagrama de clases para el sistema de votación}
+
+\newpage
+
+
+\newpage
 \bibliographystyle{apalike}
 \bibliography{ref}
 
