@@ -11,13 +11,13 @@
 \usepackage{fancyhdr}
 \usepackage{vmargin}
 \usepackage{apalike}
-%\usepackage{hyperref}
-%\hypersetup{
-%    colorlinks=true,
-%    linkcolor=blue,
-%    filecolor=magenta,      
-%    urlcolor=cyan,
-%}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1cm}{1.5 cm}
 
@@ -149,8 +149,7 @@ Ejemplos en la realidad:
 \begin{itemize}
 \item Señales de audio de micrófono
 \item Voltaje o intensidad en un circuito
-\item Flujo de bits en proporcionados por un ordenador
-\citep{iss}
+\item Flujo de bits en proporcionados por un ordenador \citep{iss}
 \end{itemize}
 
 \begin{figure}[h]
@@ -178,7 +177,7 @@ donde:\\
 \begin{figure}
 \centering
 \includegraphics[scale=0.7]{pics/sin_c.png} 
-\caption{Características de una señal sinusoidal}
+\caption{Características de una señal sinusoidal \citep{sinus}}
 \end{figure}
 
 \subsection{Requerimientos}
@@ -204,8 +203,8 @@ vertical de la señal}
 \item Cada componente deberá tener \textsf{toolTipText} explicando brevemente que función realiza. 
 \end{itemize}
 
-En la Figura 3 se sugiere la interfaz gráfica\footnote{Código disponible aquí: }
-%\href{http://www.sharelatex.com}{repositorio en GitHub} 
+En la Figura 3 se sugiere la interfaz gráfica\footnote{Código disponible aquí: \href{https://github.com/eduardoschz/LaTex/tree/master/Cursos\%202018-2/GUI/GUI_Proyecto_Generador}{repositorio en GitHub}  }
+
 
 \begin{figure}[h]
 \centering
@@ -223,7 +222,7 @@ Las tecnologías para el voto electrónico pueden incluir tarjetas perforadas, s
 
 Las tecnologías del voto electrónico pueden acelerar el conteo de los votos y proveer una mejor accesibilidad para los votantes con algún tipo de discapacidad. Sin embargo, ha sido calificado como anticonstitucional en algunos países (como Alemania1) con el argumento de "no permitir la fiscalización del proceso" por personas sin conocimientos altamente especializados.
 
-No se ha encontrado un modelo formal (conocido en la jerga como \textit{Model checking}) que garantice la seguridad de un sistema electrónico de votación. Los modelos formales son un requisito básico para mostrar que un sistema no tiene fallas triviales.
+No se ha encontrado un modelo formal (conocido en la jerga como \textit{Model checking}) que garantice la seguridad de un sistema electrónico de votación. Los modelos formales son un requisito básico para mostrar que un sistema no tiene fallas triviales. \citep{anonimo2018}
 
 \subsection{Requerimientos}
 
@@ -269,31 +268,22 @@ Para este proyecto se requerirá lo siguiente:
 \item Declarar un ganador.
 \end{itemize}
 \end{itemize} 
-\item Cada componente debe tener un \texttt{toolTipText} explicando que función realiza.
+\item Cada componente debe tener un \textsf{toolTipText} explicando que función realiza.
 \end{itemize}
 \newpage
 
 
-\section*{Apéndice A. Gráficos}
+\section{Apéndice A. Archivos en línea}
 
-\newpage
-\section*{Apéndice B. Gráficos 2D}
-
-\newpage
-\section*{Apéndice C. Gráficos estadísticos}
-
-\newpage
-
-\section*{Apéndice D. Diagrama de clases para el generador de funciones}
-
-\newpage
-\section*{Apéndice E. Diagrama de clases para el sistema de votación}
+\begin{itemize}
+\item Lectura y escritura de archivos \href{www.google.com}{\textsc{google}}
+\end{itemize}
 
 \newpage
 
 
 \newpage
 \bibliographystyle{apalike}
-\bibliography{ref}
+\bibliography{bibl}
 
 \end{document}
