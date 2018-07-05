@@ -6,7 +6,13 @@
 package gui.componentes;
 
 import java.awt.Color;
+import java.awt.Point;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,11 +24,28 @@ public class EjemploComponentes extends javax.swing.JFrame {
      * Creates new form EjemploComponentes
      */
     private DefaultListModel modeloLista = new DefaultListModel();
-    
+    private DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
+    private DefaultTableModel modeloTabla = new DefaultTableModel();
+
     public EjemploComponentes() {
         initComponents();
-        modeloLista.addElement("Rosa");
+//        Point [] arreglo = new Point[10];
+//        Vector vec = new Vector(10);
+        for (int i = 0; i < 10; i++) {
+//            arreglo[i]= new Point(i*2, i*5);
+//            vec.add(new Point(i*2, i*5));
+        }
+        for (int i = 0; i < 10; i++) {
+            modeloLista.addElement("Opcion " + i);
+            modeloCombo.addElement("Opcion " + i);
+            //  modeloTabla.addRow(new Object[]{1,2,3});
+        }
+
+//        modeloTabla.addColumn("X");
+//        modeloTabla.addColumn("Y");
+       // tblTablaPuntos.setModel(modeloTabla);
         listColores.setModel(modeloLista);
+        cbOpciones.setModel(modeloCombo);
     }
 
     /**
@@ -38,7 +61,7 @@ public class EjemploComponentes extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtCampo = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -49,6 +72,8 @@ public class EjemploComponentes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listColores = new javax.swing.JList<>();
         lblColor = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        cbOpciones = new javax.swing.JComboBox<>();
 
         buttonGroup1.add(jRadioButton1);
         buttonGroup1.add(jRadioButton2);
@@ -113,6 +138,15 @@ public class EjemploComponentes extends javax.swing.JFrame {
         lblColor.setForeground(new java.awt.Color(255, 0, 0));
         lblColor.setText("jLabel2");
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        cbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -122,7 +156,7 @@ public class EjemploComponentes extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,11 +178,15 @@ public class EjemploComponentes extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblColor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEliminar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 133, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jRadioButton3))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblColor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 71, Short.MAX_VALUE)))))
+                                .addComponent(jRadioButton3)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -165,7 +203,7 @@ public class EjemploComponentes extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton3)
@@ -182,10 +220,15 @@ public class EjemploComponentes extends javax.swing.JFrame {
                     .addComponent(jCheckBox2)
                     .addComponent(lblSeleccion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblColor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(btnEliminar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblColor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,17 +239,21 @@ public class EjemploComponentes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(this.jTextField1.getText());
+        System.out.println(this.txtCampo.getText());
         System.out.println("El jButton2 está seleccionado?:" + jRadioButton2.isSelected());
 
         this.lblSeleccion.setText("" + this.jCheckBox1.isSelected());
+
+        this.modeloLista.addElement(txtCampo.getText());
+        this.modeloCombo.addElement(txtCampo.getText());
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -247,6 +294,14 @@ public class EjemploComponentes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listColoresMouseClicked
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (!listColores.isSelectionEmpty()) {
+            modeloLista.removeElementAt(listColores.getSelectedIndex());
+        }
+
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -283,7 +338,9 @@ public class EjemploComponentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbOpciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -294,9 +351,9 @@ public class EjemploComponentes extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblColor;
     private javax.swing.JLabel lblSeleccion;
     private javax.swing.JList<String> listColores;
+    private javax.swing.JTextField txtCampo;
     // End of variables declaration//GEN-END:variables
 }
