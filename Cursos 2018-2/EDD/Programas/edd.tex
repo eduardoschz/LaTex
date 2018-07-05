@@ -17,6 +17,13 @@
 \usepackage{color}
 \usepackage{pdfpages}
 \usepackage{arydshln}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -38,7 +45,6 @@
   breakatwhitespace=true,
   tabsize=3
 }
-
 
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
@@ -73,20 +79,9 @@
 	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
 	{ \huge \bfseries \thetitle}\\
 	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
-	 			{Autor: \large \theauthor}
-% 	\begin{minipage}{0.4\textwidth}
-% 		\begin{flushleft} \large
-% 			\emph{Nombre: Nombre(s) Apellido(s]}\\
-%
-% 			\end{flushleft}
-% 			\end{minipage}~
-% 			\begin{minipage}{0.4\textwidth}
-% 			\begin{flushright} \large
-% 			\emph{Número de Cuenta} \\
-% 											% Your Student Number
-% 		\end{flushright}
-% 	\end{minipage}\\[2 cm]
-	
+	 			{Autor: \large \theauthor} \\
+	 			{e-Mail:\href{mailto:jeduardo.schz@gmail.com}{\texttt{jeduardo.schz@gmail.com}}}\\[0.5cm]
+
 	{\large \thedate}\\[2 cm]
  
 	\vfill
