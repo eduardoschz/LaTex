@@ -13,6 +13,32 @@
 \usepackage{natbib}
 \usepackage{apalike}
 \usepackage{longtable}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{arydshln}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\tiny\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
@@ -66,15 +92,11 @@
 	\vfill
 	
 \end{titlepage}
-% Please add the folloswing required packages to your document preamble:
-% \usepackage{longtable}
-% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+
 \begin{longtable}[c]{|c|c|c|c|}
 \hline
-\textbf{ID}              & \textbf{Tema}                                & \textbf{Actividad}                                                      & \textbf{Descripción}                                                                                                                                   \\ \hline
-\endfirsthead
-%
-\endhead
+\textbf{ID} & \textbf{Tema} & \textbf{Actividad} & \multicolumn{1}{c|}{\textbf{Descripción}} \\ \hline \hline
+
 %
 $1_i$                     & Estructuras básicas                          & Reseña artículo                                                         & \begin{tabular}[c]{@{}c@{}}Realizar una reseña de una \\ cuartilla sobre el artículo\end{tabular}                                                      \\ \hline
 2                        & Estructuras básicas                          & Estándar IEEE754                                                        & \begin{tabular}[c]{@{}c@{}}Realizar una clase que convierta\\ números al estándar IEEE754\end{tabular}                                                 \\ \hline
@@ -91,19 +113,149 @@ $11_{i}$                    & Estructuras no lineales                      & Pre
 \multicolumn{1}{|l|}{13} & \multicolumn{1}{l|}{Estructuras no lineales} & Arboles de expresion                                                    & \begin{tabular}[c]{@{}c@{}}Dar los arboles de expresión para las\\ operaciones dadas\end{tabular}                                                      \\ \hline
 \end{longtable}
 \newpage
+
+
 \section{Apéndice A. Diagrama de clases para la actividad 10}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{pics/clases.eps} 
+\caption{Diagrama de clases}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+
+\begin{lstlisting}
+public class Cajero {
+
+    private Integer velocidad;
+
+    public Cajero() {
+        //Velocidad por cada 10 productos
+        this.velocidad = new Random().nextInt(10) + 1;
+    }
+
+    public Integer getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(Integer velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public void cobrar(Cliente c) {
+        int tiempoPago = c.getFormaDePago().equals(true) ? 30 : 10;
+        long tiempo = ((c.getProductos() / 10) * velocidad) + tiempoPago;
+    }
+
+}
+
+\end{lstlisting}
+\caption{Codigo clase \texttt{Cajero}}
+\end{figure}
+\newpage
+\begin{figure}[h]
+\begin{lstlisting}
+public class Cliente {
+
+    private Integer productos;
+    private Boolean formaDePago; //True=efectivo->30, False=tarjeta->10
+
+    public Integer getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Integer productos) {
+        this.productos = productos;
+    }
+
+    public Boolean getFormaDePago() {
+        return formaDePago;
+    }
+
+    public void setFormaDePago(Boolean formaDePago) {
+        this.formaDePago = formaDePago;
+    }
+
+    
+    public Cliente() {
+        this.productos = new Random().nextInt(30) + 1;
+        this.formaDePago = new Random().nextBoolean();
+    }
+
+}
+\end{lstlisting}
+\caption{codigo clase \texttt{Cliente}}
+\end{figure}
 
 \newpage
 
-\section{Apéndice A}
+\section{Apéndice B. Preguntas de la actividad 11}
+
+\begin{enumerate}
+\item ¿Cómo saber si el grafo tiene bucles o ciclos? 
+\item ¿Cómo saber el número de vértices? 
+\item ¿Cómo saber si hay algún vértice sin adyacentes? 
+\item ¿Cómo calcular el número de adyacentes de un vértice?
+\item ¿Cómo sería la matriz de adyacencia de un grafo no dirigido? 
+\item ¿Cómo representar un grafo con aristas ponderadas usando una matriz de adyacencias?
+\item Dibujar el grafo de la siguientes matrices de adyacencia e indicar qué tipo de grafo representan: 
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{c|c:c:c:c:c:c|}
+• & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+0 & false & true & false & false & false & false \\ \hdashline
+1 & false & true & false & true & true & false \\ \hdashline
+2 & false & false & false & false & true & false \\ \hdashline
+3 & true & true & false & false & false & false \\ \hdashline
+4 & false & false & false & true & false & false \\ \hdashline
+5 & false & false & true & false & true & false \\ \hline
+\end{tabular}
+
+\begin{tabular}{c|c:c:c:c:c|}
+ • & A & B & C & D & E \\ \hline
+A & 0 & 1 & 0 & 0 & 1 \\ \hdashline
+B & 1 & 1 & 1 & 0 & 0 \\ \hdashline
+C & 0 & 1 & 0 & 1 & 1 \\ \hdashline
+D & 0 & 0 & 1 & 0 & 0 \\ \hdashline
+E & 1 & 0 & 1 & 0 & 1 \\ \hline
+\end{tabular} 
+
+\begin{tabular}{c|c:c:c:c:c|}
+• & 1 & 2 & 3 & 4 & 5 \\ \hline
+1 & - & - & 25 & - & 56 \\ \hdashline
+2 & - & - & - & 95 & - \\ \hdashline
+3 & 10 & - & - & - & - \\ \hdashline
+4 & - & - & 14 & - & - \\ \hdashline
+5 & - & 30 & 36 & 75 & - \\ \hline
+\end{tabular} 
+\end{center}
+
 
 \newpage
 
-\section{Apéndice A}
+\section{Apéndice C. Mapa para la actividad 12}
 
+{\centering
+\includepdf[pages=-,scale=0.8,fitpaper=true]{pics/redinternet}
+}
+
+\section{Apéndice D. Expresiones para la actividad 13}
+
+\begin{enumerate}
+\item $a+b+c+d$
+\item $a*(b-c)$
+\item $a + a * (b − c) + (b − c) * d$
+\item $i = i + 10$
+\item $((x + y) − ((x + y) ∗ (x − y))) + ((x + y) ∗ (x − y))$
+\item $a + b + (a + b)$
+\item $a + b + a + b$
+\item $a + a + ((a + a + a + (a + a + a + a))$
+\end{enumerate}
 \newpage
 
-\section{Apéndice A}
+
 
 \newpage
 \end{document}
